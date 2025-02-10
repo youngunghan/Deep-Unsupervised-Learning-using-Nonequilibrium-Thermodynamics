@@ -1,0 +1,462 @@
+2025-01-30 10:43:50,444 - INFO - ==================================================
+2025-01-30 10:43:50,444 - INFO - Starting training experiment: diffusion_default
+2025-01-30 10:43:50,445 - INFO - Tensorboard logs will be saved to runs/diffusion_default_20250130-104350
+2025-01-30 10:43:50,445 - INFO - Training device: cuda
+2025-01-30 10:43:50,445 - INFO - Batch size: 8
+2025-01-30 10:43:50,445 - INFO - Learning rate: 1e-05
+2025-01-30 10:43:50,445 - INFO - Number of epochs: 5
+2025-01-30 10:43:50,445 - INFO - Validation interval: 10 batches
+2025-01-30 10:43:50,445 - INFO - ==================================================
+2025-01-30 10:43:50,453 - INFO - Starting epoch 1/5
+2025-01-30 10:49:27,067 - INFO - Validation at epoch 1, batch 10
+2025-01-30 10:49:27,067 - INFO - Current train loss: 1.2928
+2025-01-30 10:49:27,067 - INFO - Validation loss: 1.2766
+2025-01-30 10:49:27,068 - INFO - Generating samples for visualization...
+2025-01-30 10:51:25,629 - INFO - Sample generation completed
+2025-01-30 10:51:29,904 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch10.pth
+2025-01-30 10:51:34,140 - INFO - New best model saved! Previous best: 1.2766 -> New best: 1.2766
+2025-01-30 10:56:57,546 - INFO - Validation at epoch 1, batch 20
+2025-01-30 10:56:57,547 - INFO - Current train loss: 1.2193
+2025-01-30 10:56:57,547 - INFO - Validation loss: 1.2310
+2025-01-30 10:56:57,547 - INFO - Generating samples for visualization...
+2025-01-30 10:58:52,005 - INFO - Sample generation completed
+2025-01-30 10:58:56,260 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch20.pth
+2025-01-30 10:59:21,136 - INFO - New best model saved! Previous best: 1.2310 -> New best: 1.2310
+2025-01-30 11:04:46,970 - INFO - Validation at epoch 1, batch 30
+2025-01-30 11:04:46,970 - INFO - Current train loss: 1.1769
+2025-01-30 11:04:46,970 - INFO - Validation loss: 1.1740
+2025-01-30 11:04:46,970 - INFO - Generating samples for visualization...
+2025-01-30 11:06:44,801 - INFO - Sample generation completed
+2025-01-30 11:06:50,406 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch30.pth
+2025-01-30 11:07:12,351 - INFO - New best model saved! Previous best: 1.1740 -> New best: 1.1740
+2025-01-30 11:12:37,420 - INFO - Validation at epoch 1, batch 40
+2025-01-30 11:12:37,421 - INFO - Current train loss: 1.0732
+2025-01-30 11:12:37,421 - INFO - Validation loss: 1.0893
+2025-01-30 11:12:37,421 - INFO - Generating samples for visualization...
+2025-01-30 11:14:33,508 - INFO - Sample generation completed
+2025-01-30 11:14:37,908 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch40.pth
+2025-01-30 11:15:03,467 - INFO - New best model saved! Previous best: 1.0893 -> New best: 1.0893
+2025-01-30 11:20:29,145 - INFO - Validation at epoch 1, batch 50
+2025-01-30 11:20:29,145 - INFO - Current train loss: 0.9607
+2025-01-30 11:20:29,145 - INFO - Validation loss: 0.9595
+2025-01-30 11:20:29,145 - INFO - Generating samples for visualization...
+2025-01-30 11:22:26,814 - INFO - Sample generation completed
+2025-01-30 11:22:31,265 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch50.pth
+2025-01-30 11:22:56,376 - INFO - New best model saved! Previous best: 0.9595 -> New best: 0.9595
+2025-01-30 11:28:22,525 - INFO - Validation at epoch 1, batch 60
+2025-01-30 11:28:22,525 - INFO - Current train loss: 1.0300
+2025-01-30 11:28:22,525 - INFO - Validation loss: 0.9680
+2025-01-30 11:28:22,526 - INFO - Generating samples for visualization...
+2025-01-30 11:30:13,773 - INFO - Sample generation completed
+2025-01-30 11:30:17,921 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch60.pth
+2025-01-30 11:35:33,858 - INFO - Validation at epoch 1, batch 70
+2025-01-30 11:35:33,858 - INFO - Current train loss: 0.9844
+2025-01-30 11:35:33,858 - INFO - Validation loss: 0.9519
+2025-01-30 11:35:33,858 - INFO - Generating samples for visualization...
+2025-01-30 11:37:35,794 - INFO - Sample generation completed
+2025-01-30 11:37:42,271 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch70.pth
+2025-01-30 11:38:06,344 - INFO - New best model saved! Previous best: 0.9519 -> New best: 0.9519
+2025-01-30 11:43:16,360 - INFO - Validation at epoch 1, batch 80
+2025-01-30 11:43:16,360 - INFO - Current train loss: 1.0013
+2025-01-30 11:43:16,360 - INFO - Validation loss: 0.9502
+2025-01-30 11:43:16,361 - INFO - Generating samples for visualization...
+2025-01-30 11:45:19,899 - INFO - Sample generation completed
+2025-01-30 11:45:25,989 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch80.pth
+2025-01-30 11:45:50,438 - INFO - New best model saved! Previous best: 0.9502 -> New best: 0.9502
+2025-01-30 11:51:00,308 - INFO - Validation at epoch 1, batch 90
+2025-01-30 11:51:00,308 - INFO - Current train loss: 0.8795
+2025-01-30 11:51:00,308 - INFO - Validation loss: 0.9452
+2025-01-30 11:51:00,308 - INFO - Generating samples for visualization...
+2025-01-30 11:52:56,988 - INFO - Sample generation completed
+2025-01-30 11:53:01,255 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch90.pth
+2025-01-30 11:53:27,282 - INFO - New best model saved! Previous best: 0.9452 -> New best: 0.9452
+2025-01-30 11:58:52,017 - INFO - Validation at epoch 1, batch 100
+2025-01-30 11:58:52,017 - INFO - Current train loss: 0.9375
+2025-01-30 11:58:52,017 - INFO - Validation loss: 0.9489
+2025-01-30 11:58:52,018 - INFO - Generating samples for visualization...
+2025-01-30 12:00:41,832 - INFO - Sample generation completed
+2025-01-30 12:00:46,508 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch100.pth
+2025-01-30 12:05:59,770 - INFO - Validation at epoch 1, batch 110
+2025-01-30 12:05:59,770 - INFO - Current train loss: 0.9097
+2025-01-30 12:05:59,770 - INFO - Validation loss: 0.9454
+2025-01-30 12:05:59,771 - INFO - Generating samples for visualization...
+2025-01-30 12:07:49,169 - INFO - Sample generation completed
+2025-01-30 12:07:53,841 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch110.pth
+2025-01-30 12:13:18,422 - INFO - Validation at epoch 1, batch 120
+2025-01-30 12:13:18,422 - INFO - Current train loss: 0.9316
+2025-01-30 12:13:18,422 - INFO - Validation loss: 0.9451
+2025-01-30 12:13:18,423 - INFO - Generating samples for visualization...
+2025-01-30 12:15:16,783 - INFO - Sample generation completed
+2025-01-30 12:15:22,988 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch120.pth
+2025-01-30 12:15:46,620 - INFO - New best model saved! Previous best: 0.9451 -> New best: 0.9451
+2025-01-30 12:21:08,492 - INFO - Validation at epoch 1, batch 130
+2025-01-30 12:21:08,492 - INFO - Current train loss: 0.9586
+2025-01-30 12:21:08,493 - INFO - Validation loss: 0.9457
+2025-01-30 12:21:08,493 - INFO - Generating samples for visualization...
+2025-01-30 12:23:03,222 - INFO - Sample generation completed
+2025-01-30 12:23:08,208 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch130.pth
+2025-01-30 12:28:25,581 - INFO - Validation at epoch 1, batch 140
+2025-01-30 12:28:25,581 - INFO - Current train loss: 1.0687
+2025-01-30 12:28:25,581 - INFO - Validation loss: 0.9451
+2025-01-30 12:28:25,581 - INFO - Generating samples for visualization...
+2025-01-30 12:30:15,700 - INFO - Sample generation completed
+2025-01-30 12:30:20,879 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch140.pth
+2025-01-30 12:35:45,709 - INFO - Validation at epoch 1, batch 150
+2025-01-30 12:35:45,709 - INFO - Current train loss: 0.9188
+2025-01-30 12:35:45,709 - INFO - Validation loss: 0.9476
+2025-01-30 12:35:45,710 - INFO - Generating samples for visualization...
+2025-01-30 12:37:48,358 - INFO - Sample generation completed
+2025-01-30 12:37:54,601 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch150.pth
+2025-01-30 12:43:10,110 - INFO - Validation at epoch 1, batch 160
+2025-01-30 12:43:10,111 - INFO - Current train loss: 0.9410
+2025-01-30 12:43:10,111 - INFO - Validation loss: 0.9454
+2025-01-30 12:43:10,111 - INFO - Generating samples for visualization...
+2025-01-30 12:45:14,038 - INFO - Sample generation completed
+2025-01-30 12:45:20,878 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch160.pth
+2025-01-30 12:50:35,540 - INFO - Validation at epoch 1, batch 170
+2025-01-30 12:50:35,540 - INFO - Current train loss: 0.8089
+2025-01-30 12:50:35,540 - INFO - Validation loss: 0.9465
+2025-01-30 12:50:35,541 - INFO - Generating samples for visualization...
+2025-01-30 12:52:45,295 - INFO - Sample generation completed
+2025-01-30 12:52:51,096 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch170.pth
+2025-01-30 12:58:15,259 - INFO - Validation at epoch 1, batch 180
+2025-01-30 12:58:15,259 - INFO - Current train loss: 0.9068
+2025-01-30 12:58:15,259 - INFO - Validation loss: 0.9495
+2025-01-30 12:58:15,259 - INFO - Generating samples for visualization...
+2025-01-30 13:00:12,619 - INFO - Sample generation completed
+2025-01-30 13:00:19,493 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch180.pth
+2025-01-30 13:05:35,027 - INFO - Validation at epoch 1, batch 190
+2025-01-30 13:05:35,027 - INFO - Current train loss: 0.9023
+2025-01-30 13:05:35,027 - INFO - Validation loss: 0.9446
+2025-01-30 13:05:35,028 - INFO - Generating samples for visualization...
+2025-01-30 13:07:41,415 - INFO - Sample generation completed
+2025-01-30 13:07:47,881 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch190.pth
+2025-01-30 13:08:01,374 - INFO - New best model saved! Previous best: 0.9446 -> New best: 0.9446
+2025-01-30 13:13:15,242 - INFO - Validation at epoch 1, batch 200
+2025-01-30 13:13:15,242 - INFO - Current train loss: 0.9264
+2025-01-30 13:13:15,242 - INFO - Validation loss: 0.9442
+2025-01-30 13:13:15,242 - INFO - Generating samples for visualization...
+2025-01-30 13:15:22,813 - INFO - Sample generation completed
+2025-01-30 13:15:28,816 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch200.pth
+2025-01-30 13:15:45,571 - INFO - New best model saved! Previous best: 0.9442 -> New best: 0.9442
+2025-01-30 13:20:58,451 - INFO - Validation at epoch 1, batch 210
+2025-01-30 13:20:58,451 - INFO - Current train loss: 0.8372
+2025-01-30 13:20:58,451 - INFO - Validation loss: 0.9439
+2025-01-30 13:20:58,452 - INFO - Generating samples for visualization...
+2025-01-30 13:23:08,603 - INFO - Sample generation completed
+2025-01-30 13:23:15,235 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch210.pth
+2025-01-30 13:23:27,834 - INFO - New best model saved! Previous best: 0.9439 -> New best: 0.9439
+2025-01-30 13:28:38,271 - INFO - Validation at epoch 1, batch 220
+2025-01-30 13:28:38,272 - INFO - Current train loss: 0.9131
+2025-01-30 13:28:38,272 - INFO - Validation loss: 0.9445
+2025-01-30 13:28:38,272 - INFO - Generating samples for visualization...
+2025-01-30 13:30:40,160 - INFO - Sample generation completed
+2025-01-30 13:30:47,483 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch220.pth
+2025-01-30 13:35:54,690 - INFO - Validation at epoch 1, batch 230
+2025-01-30 13:35:54,691 - INFO - Current train loss: 0.8712
+2025-01-30 13:35:54,691 - INFO - Validation loss: 0.9441
+2025-01-30 13:35:54,691 - INFO - Generating samples for visualization...
+2025-01-30 13:37:54,898 - INFO - Sample generation completed
+2025-01-30 13:38:01,292 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch230.pth
+2025-01-30 13:43:11,179 - INFO - Validation at epoch 1, batch 240
+2025-01-30 13:43:11,180 - INFO - Current train loss: 0.9310
+2025-01-30 13:43:11,180 - INFO - Validation loss: 0.9440
+2025-01-30 13:43:11,180 - INFO - Generating samples for visualization...
+2025-01-30 13:45:17,984 - INFO - Sample generation completed
+2025-01-30 13:45:24,257 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch240.pth
+2025-01-30 13:50:38,019 - INFO - Validation at epoch 1, batch 250
+2025-01-30 13:50:38,019 - INFO - Current train loss: 0.9786
+2025-01-30 13:50:38,020 - INFO - Validation loss: 0.9437
+2025-01-30 13:50:38,020 - INFO - Generating samples for visualization...
+2025-01-30 13:52:47,524 - INFO - Sample generation completed
+2025-01-30 13:52:53,446 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch250.pth
+2025-01-30 13:53:15,405 - INFO - New best model saved! Previous best: 0.9437 -> New best: 0.9437
+2025-01-30 13:58:28,119 - INFO - Validation at epoch 1, batch 260
+2025-01-30 13:58:28,119 - INFO - Current train loss: 0.8905
+2025-01-30 13:58:28,119 - INFO - Validation loss: 0.9435
+2025-01-30 13:58:28,119 - INFO - Generating samples for visualization...
+2025-01-30 14:00:28,466 - INFO - Sample generation completed
+2025-01-30 14:00:34,100 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch260.pth
+2025-01-30 14:00:54,160 - INFO - New best model saved! Previous best: 0.9435 -> New best: 0.9435
+2025-01-30 14:06:12,796 - INFO - Validation at epoch 1, batch 270
+2025-01-30 14:06:12,796 - INFO - Current train loss: 0.9957
+2025-01-30 14:06:12,796 - INFO - Validation loss: 0.9435
+2025-01-30 14:06:12,797 - INFO - Generating samples for visualization...
+2025-01-30 14:08:04,777 - INFO - Sample generation completed
+2025-01-30 14:08:10,081 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch270.pth
+2025-01-30 14:08:23,810 - INFO - New best model saved! Previous best: 0.9435 -> New best: 0.9435
+2025-01-30 14:13:37,495 - INFO - Validation at epoch 1, batch 280
+2025-01-30 14:13:37,496 - INFO - Current train loss: 0.8619
+2025-01-30 14:13:37,496 - INFO - Validation loss: 0.9441
+2025-01-30 14:13:37,496 - INFO - Generating samples for visualization...
+2025-01-30 14:15:31,330 - INFO - Sample generation completed
+2025-01-30 14:15:36,870 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch280.pth
+2025-01-30 14:20:48,412 - INFO - Validation at epoch 1, batch 290
+2025-01-30 14:20:48,412 - INFO - Current train loss: 0.8741
+2025-01-30 14:20:48,412 - INFO - Validation loss: 0.9434
+2025-01-30 14:20:48,413 - INFO - Generating samples for visualization...
+2025-01-30 14:22:45,392 - INFO - Sample generation completed
+2025-01-30 14:22:50,969 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch290.pth
+2025-01-30 14:23:03,435 - INFO - New best model saved! Previous best: 0.9434 -> New best: 0.9434
+2025-01-30 14:28:17,367 - INFO - Validation at epoch 1, batch 300
+2025-01-30 14:28:17,367 - INFO - Current train loss: 0.8804
+2025-01-30 14:28:17,367 - INFO - Validation loss: 0.9455
+2025-01-30 14:28:17,368 - INFO - Generating samples for visualization...
+2025-01-30 14:30:17,650 - INFO - Sample generation completed
+2025-01-30 14:30:23,124 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch300.pth
+2025-01-30 14:35:39,334 - INFO - Validation at epoch 1, batch 310
+2025-01-30 14:35:39,334 - INFO - Current train loss: 0.9753
+2025-01-30 14:35:39,334 - INFO - Validation loss: 0.9462
+2025-01-30 14:35:39,335 - INFO - Generating samples for visualization...
+2025-01-30 14:37:33,652 - INFO - Sample generation completed
+2025-01-30 14:37:38,658 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch310.pth
+2025-01-30 14:42:59,090 - INFO - Validation at epoch 1, batch 320
+2025-01-30 14:42:59,090 - INFO - Current train loss: 0.9119
+2025-01-30 14:42:59,090 - INFO - Validation loss: 0.9434
+2025-01-30 14:42:59,091 - INFO - Generating samples for visualization...
+2025-01-30 14:44:50,901 - INFO - Sample generation completed
+2025-01-30 14:44:55,407 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch320.pth
+2025-01-30 14:45:18,174 - INFO - New best model saved! Previous best: 0.9434 -> New best: 0.9434
+2025-01-30 14:50:35,650 - INFO - Validation at epoch 1, batch 330
+2025-01-30 14:50:35,650 - INFO - Current train loss: 0.9266
+2025-01-30 14:50:35,650 - INFO - Validation loss: 0.9447
+2025-01-30 14:50:35,651 - INFO - Generating samples for visualization...
+2025-01-30 14:52:27,851 - INFO - Sample generation completed
+2025-01-30 14:52:32,219 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch330.pth
+2025-01-30 14:57:54,176 - INFO - Validation at epoch 1, batch 340
+2025-01-30 14:57:54,176 - INFO - Current train loss: 0.9207
+2025-01-30 14:57:54,176 - INFO - Validation loss: 0.9438
+2025-01-30 14:57:54,177 - INFO - Generating samples for visualization...
+2025-01-30 14:59:51,134 - INFO - Sample generation completed
+2025-01-30 14:59:56,016 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch340.pth
+2025-01-30 15:05:18,464 - INFO - Validation at epoch 1, batch 350
+2025-01-30 15:05:18,464 - INFO - Current train loss: 0.9246
+2025-01-30 15:05:18,465 - INFO - Validation loss: 0.9438
+2025-01-30 15:05:18,465 - INFO - Generating samples for visualization...
+2025-01-30 15:07:15,481 - INFO - Sample generation completed
+2025-01-30 15:07:19,808 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch350.pth
+2025-01-30 15:12:39,676 - INFO - Validation at epoch 1, batch 360
+2025-01-30 15:12:39,676 - INFO - Current train loss: 0.9431
+2025-01-30 15:12:39,676 - INFO - Validation loss: 0.9429
+2025-01-30 15:12:39,677 - INFO - Generating samples for visualization...
+2025-01-30 15:14:31,059 - INFO - Sample generation completed
+2025-01-30 15:14:35,552 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch360.pth
+2025-01-30 15:14:57,719 - INFO - New best model saved! Previous best: 0.9429 -> New best: 0.9429
+2025-01-30 15:20:13,483 - INFO - Validation at epoch 1, batch 370
+2025-01-30 15:20:13,483 - INFO - Current train loss: 0.9294
+2025-01-30 15:20:13,483 - INFO - Validation loss: 0.9429
+2025-01-30 15:20:13,483 - INFO - Generating samples for visualization...
+2025-01-30 15:22:05,155 - INFO - Sample generation completed
+2025-01-30 15:22:10,261 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch370.pth
+2025-01-30 15:22:25,850 - INFO - New best model saved! Previous best: 0.9429 -> New best: 0.9429
+2025-01-30 15:27:42,999 - INFO - Validation at epoch 1, batch 380
+2025-01-30 15:27:42,999 - INFO - Current train loss: 0.9095
+2025-01-30 15:27:42,999 - INFO - Validation loss: 0.9444
+2025-01-30 15:27:42,999 - INFO - Generating samples for visualization...
+2025-01-30 15:29:40,212 - INFO - Sample generation completed
+2025-01-30 15:29:45,255 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch380.pth
+2025-01-30 15:35:02,936 - INFO - Validation at epoch 1, batch 390
+2025-01-30 15:35:02,937 - INFO - Current train loss: 0.9506
+2025-01-30 15:35:02,937 - INFO - Validation loss: 0.9484
+2025-01-30 15:35:02,937 - INFO - Generating samples for visualization...
+2025-01-30 15:36:58,564 - INFO - Sample generation completed
+2025-01-30 15:37:03,906 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch390.pth
+2025-01-30 15:42:21,104 - INFO - Validation at epoch 1, batch 400
+2025-01-30 15:42:21,104 - INFO - Current train loss: 1.0129
+2025-01-30 15:42:21,105 - INFO - Validation loss: 0.9433
+2025-01-30 15:42:21,105 - INFO - Generating samples for visualization...
+2025-01-30 15:44:15,749 - INFO - Sample generation completed
+2025-01-30 15:44:20,665 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch400.pth
+2025-01-30 15:49:34,939 - INFO - Validation at epoch 1, batch 410
+2025-01-30 15:49:34,940 - INFO - Current train loss: 0.8358
+2025-01-30 15:49:34,940 - INFO - Validation loss: 0.9430
+2025-01-30 15:49:34,940 - INFO - Generating samples for visualization...
+2025-01-30 15:51:27,389 - INFO - Sample generation completed
+2025-01-30 15:51:32,728 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch410.pth
+2025-01-30 15:56:53,326 - INFO - Validation at epoch 1, batch 420
+2025-01-30 15:56:53,327 - INFO - Current train loss: 0.8762
+2025-01-30 15:56:53,327 - INFO - Validation loss: 0.9462
+2025-01-30 15:56:53,327 - INFO - Generating samples for visualization...
+2025-01-30 15:58:45,257 - INFO - Sample generation completed
+2025-01-30 15:58:49,762 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch420.pth
+2025-01-30 16:04:09,493 - INFO - Validation at epoch 1, batch 430
+2025-01-30 16:04:09,494 - INFO - Current train loss: 0.9743
+2025-01-30 16:04:09,494 - INFO - Validation loss: 0.9438
+2025-01-30 16:04:09,494 - INFO - Generating samples for visualization...
+2025-01-30 16:06:05,418 - INFO - Sample generation completed
+2025-01-30 16:06:10,101 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch430.pth
+2025-01-30 16:11:30,432 - INFO - Validation at epoch 1, batch 440
+2025-01-30 16:11:30,432 - INFO - Current train loss: 0.9619
+2025-01-30 16:11:30,432 - INFO - Validation loss: 0.9427
+2025-01-30 16:11:30,432 - INFO - Generating samples for visualization...
+2025-01-30 16:13:24,327 - INFO - Sample generation completed
+2025-01-30 16:13:29,888 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch440.pth
+2025-01-30 16:13:41,653 - INFO - New best model saved! Previous best: 0.9427 -> New best: 0.9427
+2025-01-30 16:18:57,834 - INFO - Validation at epoch 1, batch 450
+2025-01-30 16:18:57,834 - INFO - Current train loss: 1.0218
+2025-01-30 16:18:57,834 - INFO - Validation loss: 0.9427
+2025-01-30 16:18:57,834 - INFO - Generating samples for visualization...
+2025-01-30 16:20:53,843 - INFO - Sample generation completed
+2025-01-30 16:20:58,681 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch450.pth
+2025-01-30 16:21:14,113 - INFO - New best model saved! Previous best: 0.9427 -> New best: 0.9427
+2025-01-30 16:26:30,442 - INFO - Validation at epoch 1, batch 460
+2025-01-30 16:26:30,442 - INFO - Current train loss: 0.9615
+2025-01-30 16:26:30,442 - INFO - Validation loss: 0.9443
+2025-01-30 16:26:30,443 - INFO - Generating samples for visualization...
+2025-01-30 16:28:22,923 - INFO - Sample generation completed
+2025-01-30 16:28:27,285 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch460.pth
+2025-01-30 16:33:42,132 - INFO - Validation at epoch 1, batch 470
+2025-01-30 16:33:42,132 - INFO - Current train loss: 0.8942
+2025-01-30 16:33:42,132 - INFO - Validation loss: 0.9427
+2025-01-30 16:33:42,133 - INFO - Generating samples for visualization...
+2025-01-30 16:35:37,509 - INFO - Sample generation completed
+2025-01-30 16:35:42,223 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch470.pth
+2025-01-30 16:35:59,129 - INFO - New best model saved! Previous best: 0.9427 -> New best: 0.9427
+2025-01-30 16:41:16,375 - INFO - Validation at epoch 1, batch 480
+2025-01-30 16:41:16,376 - INFO - Current train loss: 0.9331
+2025-01-30 16:41:16,376 - INFO - Validation loss: 0.9426
+2025-01-30 16:41:16,376 - INFO - Generating samples for visualization...
+2025-01-30 16:43:11,777 - INFO - Sample generation completed
+2025-01-30 16:43:16,522 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch480.pth
+2025-01-30 16:43:34,421 - INFO - New best model saved! Previous best: 0.9426 -> New best: 0.9426
+2025-01-30 16:48:51,962 - INFO - Validation at epoch 1, batch 490
+2025-01-30 16:48:51,962 - INFO - Current train loss: 0.9579
+2025-01-30 16:48:51,962 - INFO - Validation loss: 0.9431
+2025-01-30 16:48:51,963 - INFO - Generating samples for visualization...
+2025-01-30 16:50:43,918 - INFO - Sample generation completed
+2025-01-30 16:50:48,463 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch490.pth
+2025-01-30 16:56:03,347 - INFO - Validation at epoch 1, batch 500
+2025-01-30 16:56:03,347 - INFO - Current train loss: 1.0410
+2025-01-30 16:56:03,347 - INFO - Validation loss: 0.9425
+2025-01-30 16:56:03,347 - INFO - Generating samples for visualization...
+2025-01-30 16:57:58,902 - INFO - Sample generation completed
+2025-01-30 16:58:03,716 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch500.pth
+2025-01-30 16:58:17,876 - INFO - New best model saved! Previous best: 0.9425 -> New best: 0.9425
+2025-01-30 17:03:36,486 - INFO - Validation at epoch 1, batch 510
+2025-01-30 17:03:36,486 - INFO - Current train loss: 0.8852
+2025-01-30 17:03:36,486 - INFO - Validation loss: 0.9434
+2025-01-30 17:03:36,486 - INFO - Generating samples for visualization...
+2025-01-30 17:05:27,583 - INFO - Sample generation completed
+2025-01-30 17:05:31,997 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch510.pth
+2025-01-30 17:10:49,427 - INFO - Validation at epoch 1, batch 520
+2025-01-30 17:10:49,427 - INFO - Current train loss: 1.0365
+2025-01-30 17:10:49,427 - INFO - Validation loss: 0.9427
+2025-01-30 17:10:49,428 - INFO - Generating samples for visualization...
+2025-01-30 17:12:43,446 - INFO - Sample generation completed
+2025-01-30 17:12:48,534 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch520.pth
+2025-01-30 17:18:06,251 - INFO - Validation at epoch 1, batch 530
+2025-01-30 17:18:06,251 - INFO - Current train loss: 0.9346
+2025-01-30 17:18:06,251 - INFO - Validation loss: 0.9426
+2025-01-30 17:18:06,252 - INFO - Generating samples for visualization...
+2025-01-30 17:20:00,568 - INFO - Sample generation completed
+2025-01-30 17:20:05,599 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch530.pth
+2025-01-30 17:25:19,298 - INFO - Validation at epoch 1, batch 540
+2025-01-30 17:25:19,299 - INFO - Current train loss: 0.8775
+2025-01-30 17:25:19,299 - INFO - Validation loss: 0.9429
+2025-01-30 17:25:19,299 - INFO - Generating samples for visualization...
+2025-01-30 17:27:12,891 - INFO - Sample generation completed
+2025-01-30 17:27:17,517 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch540.pth
+2025-01-30 17:32:30,901 - INFO - Validation at epoch 1, batch 550
+2025-01-30 17:32:30,901 - INFO - Current train loss: 1.0442
+2025-01-30 17:32:30,901 - INFO - Validation loss: 0.9466
+2025-01-30 17:32:30,902 - INFO - Generating samples for visualization...
+2025-01-30 17:34:28,390 - INFO - Sample generation completed
+2025-01-30 17:34:33,059 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch550.pth
+2025-01-30 17:39:50,973 - INFO - Validation at epoch 1, batch 560
+2025-01-30 17:39:50,974 - INFO - Current train loss: 1.0118
+2025-01-30 17:39:50,974 - INFO - Validation loss: 0.9429
+2025-01-30 17:39:50,974 - INFO - Generating samples for visualization...
+2025-01-30 17:41:45,493 - INFO - Sample generation completed
+2025-01-30 17:41:50,358 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch560.pth
+2025-01-30 17:47:09,385 - INFO - Validation at epoch 1, batch 570
+2025-01-30 17:47:09,385 - INFO - Current train loss: 0.8981
+2025-01-30 17:47:09,385 - INFO - Validation loss: 0.9425
+2025-01-30 17:47:09,386 - INFO - Generating samples for visualization...
+2025-01-30 17:49:04,286 - INFO - Sample generation completed
+2025-01-30 17:49:08,771 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch570.pth
+2025-01-30 17:49:31,091 - INFO - New best model saved! Previous best: 0.9425 -> New best: 0.9425
+2025-01-30 17:54:46,021 - INFO - Validation at epoch 1, batch 580
+2025-01-30 17:54:46,022 - INFO - Current train loss: 0.9180
+2025-01-30 17:54:46,022 - INFO - Validation loss: 0.9428
+2025-01-30 17:54:46,022 - INFO - Generating samples for visualization...
+2025-01-30 17:56:40,184 - INFO - Sample generation completed
+2025-01-30 17:56:45,070 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch580.pth
+2025-01-30 18:02:02,929 - INFO - Validation at epoch 1, batch 590
+2025-01-30 18:02:02,929 - INFO - Current train loss: 0.9332
+2025-01-30 18:02:02,929 - INFO - Validation loss: 0.9427
+2025-01-30 18:02:02,929 - INFO - Generating samples for visualization...
+2025-01-30 18:03:56,743 - INFO - Sample generation completed
+2025-01-30 18:04:01,346 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch590.pth
+2025-01-30 18:09:18,172 - INFO - Validation at epoch 1, batch 600
+2025-01-30 18:09:18,172 - INFO - Current train loss: 0.8854
+2025-01-30 18:09:18,172 - INFO - Validation loss: 0.9432
+2025-01-30 18:09:18,173 - INFO - Generating samples for visualization...
+2025-01-30 18:11:09,853 - INFO - Sample generation completed
+2025-01-30 18:11:14,588 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch600.pth
+2025-01-30 18:16:33,104 - INFO - Validation at epoch 1, batch 610
+2025-01-30 18:16:33,104 - INFO - Current train loss: 1.0269
+2025-01-30 18:16:33,104 - INFO - Validation loss: 0.9425
+2025-01-30 18:16:33,105 - INFO - Generating samples for visualization...
+2025-01-30 18:18:29,762 - INFO - Sample generation completed
+2025-01-30 18:18:34,665 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch610.pth
+2025-01-30 18:18:54,890 - INFO - New best model saved! Previous best: 0.9425 -> New best: 0.9425
+2025-01-30 18:24:08,451 - INFO - Validation at epoch 1, batch 620
+2025-01-30 18:24:08,451 - INFO - Current train loss: 0.9397
+2025-01-30 18:24:08,451 - INFO - Validation loss: 0.9437
+2025-01-30 18:24:08,451 - INFO - Generating samples for visualization...
+2025-01-30 18:26:04,741 - INFO - Sample generation completed
+2025-01-30 18:26:09,159 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch620.pth
+2025-01-30 18:31:22,911 - INFO - Validation at epoch 1, batch 630
+2025-01-30 18:31:22,911 - INFO - Current train loss: 0.8825
+2025-01-30 18:31:22,911 - INFO - Validation loss: 0.9428
+2025-01-30 18:31:22,912 - INFO - Generating samples for visualization...
+2025-01-30 18:33:18,080 - INFO - Sample generation completed
+2025-01-30 18:33:23,121 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch630.pth
+2025-01-30 18:38:36,188 - INFO - Validation at epoch 1, batch 640
+2025-01-30 18:38:36,188 - INFO - Current train loss: 0.9418
+2025-01-30 18:38:36,188 - INFO - Validation loss: 0.9427
+2025-01-30 18:38:36,189 - INFO - Generating samples for visualization...
+2025-01-30 18:40:29,610 - INFO - Sample generation completed
+2025-01-30 18:40:34,846 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch640.pth
+2025-01-30 18:45:52,554 - INFO - Validation at epoch 1, batch 650
+2025-01-30 18:45:52,554 - INFO - Current train loss: 0.8860
+2025-01-30 18:45:52,555 - INFO - Validation loss: 0.9460
+2025-01-30 18:45:52,555 - INFO - Generating samples for visualization...
+2025-01-30 18:47:45,164 - INFO - Sample generation completed
+2025-01-30 18:47:50,128 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch650.pth
+2025-01-30 18:53:07,918 - INFO - Validation at epoch 1, batch 660
+2025-01-30 18:53:07,919 - INFO - Current train loss: 0.9273
+2025-01-30 18:53:07,919 - INFO - Validation loss: 0.9427
+2025-01-30 18:53:07,919 - INFO - Generating samples for visualization...
+2025-01-30 18:55:03,120 - INFO - Sample generation completed
+2025-01-30 18:55:07,944 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch660.pth
+2025-01-30 19:00:23,847 - INFO - Validation at epoch 1, batch 670
+2025-01-30 19:00:23,848 - INFO - Current train loss: 0.9480
+2025-01-30 19:00:23,848 - INFO - Validation loss: 0.9429
+2025-01-30 19:00:23,849 - INFO - Generating samples for visualization...
+2025-01-30 19:02:21,052 - INFO - Sample generation completed
+2025-01-30 19:02:26,222 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch670.pth
+2025-01-30 19:07:45,062 - INFO - Validation at epoch 1, batch 680
+2025-01-30 19:07:45,063 - INFO - Current train loss: 0.9095
+2025-01-30 19:07:45,063 - INFO - Validation loss: 0.9433
+2025-01-30 19:07:45,063 - INFO - Generating samples for visualization...
+2025-01-30 19:09:39,735 - INFO - Sample generation completed
+2025-01-30 19:09:44,351 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch680.pth
+2025-01-30 19:15:02,352 - INFO - Validation at epoch 1, batch 690
+2025-01-30 19:15:02,352 - INFO - Current train loss: 0.9365
+2025-01-30 19:15:02,352 - INFO - Validation loss: 0.9428
+2025-01-30 19:15:02,353 - INFO - Generating samples for visualization...
+2025-01-30 19:16:55,528 - INFO - Sample generation completed
+2025-01-30 19:17:00,122 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch690.pth
+2025-01-30 19:22:17,473 - INFO - Validation at epoch 1, batch 700
+2025-01-30 19:22:17,473 - INFO - Current train loss: 0.9832
+2025-01-30 19:22:17,473 - INFO - Validation loss: 0.9437
+2025-01-30 19:22:17,473 - INFO - Generating samples for visualization...
+2025-01-30 19:24:12,912 - INFO - Sample generation completed
+2025-01-30 19:24:17,502 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch700.pth
+2025-01-30 19:29:31,110 - INFO - Validation at epoch 1, batch 710
+2025-01-30 19:29:31,110 - INFO - Current train loss: 0.8824
+2025-01-30 19:29:31,110 - INFO - Validation loss: 0.9426
+2025-01-30 19:29:31,111 - INFO - Generating samples for visualization...
+2025-01-30 19:31:26,607 - INFO - Sample generation completed
+2025-01-30 19:31:31,201 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch710.pth
