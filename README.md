@@ -71,7 +71,6 @@ Execute the training script to start the training process:
    ./run_swiss_roll.sh
    ```
 
-### Run the Training Script
 
 ## License
 
