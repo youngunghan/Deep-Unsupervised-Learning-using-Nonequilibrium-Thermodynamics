@@ -74,7 +74,10 @@ Execute the training script to start the training process:
 ## References
 
 - The dataset is based on the MNIST and Swoss Roll dataset, which is widely used for training and testing in machine learning.
-- Deep Unsupervised Learning using Nonequilibrium Thermodynamics (arXiv 2015) | [Review](https://outta.tistory.com/109) <br> [Paper](https://arxiv.org/abs/1503.03585) <br> [Code](https://github.com/youngunghan/2025-OUTTA-Gen-AI/blob/main/Reviews/Diffusion/Deep_Unsupervised_Learning_using_Nonequilibrium_Thermodynamics_mschoi.ipynb)
+- Deep Unsupervised Learning using Nonequilibrium Thermodynamics (arXiv 2015)
+   - [Review](https://outta.tistory.com/109) <br>
+   - [Paper](https://arxiv.org/abs/1503.03585) <br>
+   - [Code](https://github.com/youngunghan/2025-OUTTA-Gen-AI/blob/main/Reviews/Diffusion/Deep_Unsupervised_Learning_using_Nonequilibrium_Thermodynamics_mschoi.ipynb)
 
 ## About
 
