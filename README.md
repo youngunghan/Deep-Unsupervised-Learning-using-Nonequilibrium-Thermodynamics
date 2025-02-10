@@ -1,10 +1,8 @@
 # Deep Unsupervised Learning using Nonequilibrium Thermodynamics
 
-This repository implements deep unsupervised learning techniques using nonequilibrium thermodynamics principles. It includes scripts for dataset preprocessing, training, evaluation, and inference.
+This repository implements deep unsupervised learning techniques using nonequilibrium thermodynamics principles. 
 
-## Dataset Preprocessing
-
-### Environment Setup
+## Environment Setup
 
 Before preprocessing the dataset, ensure you have the required environment set up:
 
@@ -17,20 +15,9 @@ Before preprocessing the dataset, ensure you have the required environment set u
    conda activate deep_thermo
    ```
 
-### Dataset Structure
-
-The dataset should be organized in the following structure:
-
-data/MNIST/raw/
-├── train/
-│ ├── 000001.png
-│ ├── 000002.png
-│ └── ...
-└── test/
-├── 000001.png
-├── 000002.png
-└── ...
-
+---
+# MNIST
+---
 
 ## Train
 
@@ -66,6 +53,25 @@ Execute the inference script to generate predictions on the MNIST dataset:
    ```bash
    python scripts/infer.py
    ```
+
+---
+Swiss Roll
+---
+
+### Run the Training Script and Infering Script
+
+Execute the training script to start the training process:
+
+1. **Give execution permission to the training script:**  
+   ```bash
+   chmod +x run_swiss_roll.sh
+   ```
+2. **Run the training script:**  
+   ```bash
+   ./run_swiss_roll.sh
+   ```
+
+### Run the Training Script
 
 ## License
 
