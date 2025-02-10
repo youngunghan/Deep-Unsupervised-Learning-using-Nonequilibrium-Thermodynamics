@@ -1,0 +1,21 @@
+name: deep_thermo
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pytorch
+  - torchvision
+  - cudatoolkit=11.8
+  - numpy
+  - matplotlib
+  - pip
+  - jupyter
+  - ipykernel
+  - tqdm
+  - scikit-learn
+  - pandas
+  - pip:
+    - tensorboard

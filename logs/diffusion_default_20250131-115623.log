@@ -1,0 +1,18 @@
+2025-01-31 11:56:23,997 - INFO - ==================================================
+2025-01-31 11:56:23,997 - INFO - Starting training experiment: diffusion_default
+2025-01-31 11:56:23,997 - INFO - Tensorboard logs will be saved to runs/diffusion_default_20250131-115623
+2025-01-31 11:56:23,997 - INFO - Training device: cuda
+2025-01-31 11:56:23,997 - INFO - Batch size: 8
+2025-01-31 11:56:23,997 - INFO - Learning rate: 1e-05
+2025-01-31 11:56:23,997 - INFO - Number of epochs: 5
+2025-01-31 11:56:23,997 - INFO - Validation interval: 10 batches
+2025-01-31 11:56:23,997 - INFO - Resuming from epoch 1, batch 710
+2025-01-31 11:56:23,997 - INFO - ==================================================
+2025-01-31 11:56:24,002 - INFO - Starting epoch 1/5
+2025-01-31 12:01:03,254 - INFO - Validation at epoch 1, batch 10
+2025-01-31 12:01:03,255 - INFO - Current train loss: 0.9770
+2025-01-31 12:01:03,255 - INFO - Validation loss: 0.9490
+2025-01-31 12:01:03,255 - INFO - Generating samples for visualization...
+2025-01-31 12:02:43,882 - INFO - Sample generation completed
+2025-01-31 12:02:55,681 - INFO - Saved checkpoint to checkpoints/diffusion_default_epoch1_batch10.pth
+2025-01-31 12:03:06,980 - INFO - New best model saved! Previous best: 0.9490 -> New best: 0.9490
