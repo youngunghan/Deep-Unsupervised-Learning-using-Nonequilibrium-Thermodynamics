@@ -2,36 +2,25 @@ import torch
 import torch.nn as nn
 
 class MultiscaleConvolution(nn.Module):
-    """    
-    Args:
-        num_channels (int): Number of input channels (e.g., 1 for grayscale, 3 for RGB)
-        num_filters (int): Number of output channels for each convolution
-        num_scales (int, optional): Number of different scales to process. Default: 4
-                                  Each scale is a power of 2 downsampling
-        filter_size (int, optional): Convolution kernel size. Default: 5
-                                   Larger size captures more spatial context
-        activation (callable, optional): Custom activation function. Default: shifted softplus
-                                      f(x) = log(1 + exp(x-1))
-        padding_mode (str, optional): Convolution padding type. Default: 'reflect'
-                                    Helps handle image boundaries
-        upsample_mode (str, optional): Interpolation method. Default: 'bilinear'
-                                     Used when restoring original resolution
-        device (torch.device, optional): Computing device. Default: None (auto-detect)
+    """Multi-scale convolution layer for extracting features at different resolutions
     
-    Shape:
-        - Input: (batch_size, num_channels, height, width)
-        - Output: (batch_size, num_filters, height, width)
-        
-    Examples:
-        >>> # Process MNIST images
+    Performs convolution at multiple scales to capture both fine details and global structure.
+
+    
+    Args:
+        num_channels (int): Number of input channels (1 for grayscale, 3 for RGB)
+        num_filters (int): Number of output filters/channels
+        num_scales (int): Number of different scales to process
+        filter_size (int): Convolution kernel size
+        activation (callable): Activation function (defaults to shifted softplus)
+        padding_mode (str): Padding mode for convolution
+        upsample_mode (str): Interpolation mode for upsampling
+        device (torch.device): Device to run computations on
+    
+    Example:
         >>> layer = MultiscaleConvolution(num_channels=1, num_filters=64)
-        >>> x = torch.randn(32, 1, 28, 28)  # Batch of MNIST images
-        >>> out = layer(x)  # Shape: [32, 64, 28, 28]
-        
-        >>> # Process RGB images
-        >>> layer = MultiscaleConvolution(num_channels=3, num_filters=128)
-        >>> x = torch.randn(16, 3, 64, 64)  # Batch of RGB images
-        >>> out = layer(x)  # Shape: [16, 128, 64, 64]
+        >>> x = torch.randn(32, 1, 28, 28)
+        >>> features = layer(x)  # Shape: [32, 64, 28, 28]
     """
     def __init__(
         self,
@@ -44,6 +33,25 @@ class MultiscaleConvolution(nn.Module):
         upsample_mode: str = 'bilinear',
         device: torch.device = None
     ):
+        """Initialize MultiscaleConvolution layer
+        
+        Args:
+            num_channels (int): Number of input channels
+            num_filters (int): Number of output filters/channels
+            num_scales (int): Number of different scales to process
+            filter_size (int): Convolution kernel size
+            activation (callable): Activation function (defaults to shifted softplus)
+            padding_mode (str): Padding mode for convolution
+            upsample_mode (str): Interpolation mode for upsampling
+            device (torch.device): Device to run computations on
+            
+        Returns:
+            None
+            
+        Example:
+            >>> layer = MultiscaleConvolution(num_channels=3, num_filters=64, num_scales=4)
+            >>> layer.num_filters  # 64
+        """
         super(MultiscaleConvolution, self).__init__()
         self.device = device if device is not None else torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         
@@ -59,10 +67,17 @@ class MultiscaleConvolution(nn.Module):
         self.conv_layers = self._build_conv_layers(num_channels)
 
     def _build_conv_layers(self, num_channels: int) -> nn.ModuleList:
-        """Build convolution layers for each scale
+        """Create convolution layers for each scale
         
-        Creates separate convolution layers for each scale to allow
-        independent processing at different resolutions.
+        Args:
+            num_channels (int): Number of input channels
+            
+        Returns:
+            nn.ModuleList: List of Conv2d layers for different scales
+            
+        Example:
+            >>> conv_layers = layer._build_conv_layers(3)  # For RGB input
+            >>> len(conv_layers)  # Equal to num_scales
         """
         return nn.ModuleList([
             nn.Conv2d(
@@ -76,28 +91,34 @@ class MultiscaleConvolution(nn.Module):
 
     @staticmethod
     def _shifted_softplus(x: torch.Tensor) -> torch.Tensor:
-        """Shifted softplus activation: f(x) = log(1 + exp(x-1))
+        """Smooth activation function: f(x) = log(1 + exp(x-1))
         
-        This activation function:
-        - Is smoother than ReLU
-        - Has better gradient properties
-        - Helps prevent saturation
+        Args:
+            x (torch.Tensor): Input tensor
+            
+        Returns:
+            torch.Tensor: Activated tensor with same shape as input
+            
+        Example:
+            >>> x = torch.randn(2, 3)
+            >>> activated = MultiscaleConvolution._shifted_softplus(x)
+            >>> activated.shape  # torch.Size([2, 3])
         """
         return torch.nn.functional.softplus(x - 1)
 
     def downsample(self, x: torch.Tensor, scale: int) -> torch.Tensor:
-        """Downsample input using average pooling
+        """Reduce resolution by a factor of 2^scale using average pooling
         
         Args:
-            x (torch.Tensor): Input tensor [batch_size, channels, height, width]
-            scale (int): Scale factor (power of 2)
+            x (torch.Tensor): Input tensor [batch, channels, height, width]
+            scale (int): Downsampling scale factor (0 means no downsampling)
             
         Returns:
-            torch.Tensor: Downsampled tensor [batch_size, channels, height/2^scale, width/2^scale]
+            torch.Tensor: Downsampled tensor [batch, channels, height//2^scale, width//2^scale]
             
         Example:
-            >>> x = torch.randn(1, 1, 28, 28)
-            >>> y = downsample(x, scale=2)  # Output shape: [1, 1, 7, 7]
+            >>> x = torch.randn(1, 1, 32, 32)
+            >>> y = layer.downsample(x, scale=2)  # Output: [1, 1, 8, 8]
         """
         if scale == 0:
             return x
@@ -105,19 +126,19 @@ class MultiscaleConvolution(nn.Module):
         return nn.functional.avg_pool2d(x, kernel_size=kernel_size, stride=kernel_size)
 
     def upsample(self, x: torch.Tensor, scale: int, size: int = None) -> torch.Tensor:
-        """Upsample input using specified interpolation mode
+        """Increase resolution by a factor of 2^scale using interpolation
         
         Args:
-            x (torch.Tensor): Input tensor [batch_size, channels, height, width]
-            scale (int): Scale factor (power of 2)
-            size (int, optional): Target size. Default: None
+            x (torch.Tensor): Input tensor [batch, channels, height, width]
+            scale (int): Upsampling scale factor (0 means no upsampling)
+            size (int): Target size (defaults to current_size * 2^scale)
             
         Returns:
-            torch.Tensor: Upsampled tensor [batch_size, channels, size, size]
+            torch.Tensor: Upsampled tensor [batch, channels, size, size]
             
         Example:
-            >>> x = torch.randn(1, 64, 7, 7)
-            >>> y = upsample(x, scale=2, size=28)  # Output shape: [1, 64, 28, 28]
+            >>> x = torch.randn(1, 64, 8, 8)
+            >>> y = layer.upsample(x, scale=2, size=32)  # Output: [1, 64, 32, 32]
         """
         if scale == 0:
             return x
@@ -131,24 +152,18 @@ class MultiscaleConvolution(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Forward pass of the multi-scale convolution
-        
-        Process steps:
-        1. Downsample input to different scales
-        2. Apply convolution at each scale
-        3. Upsample results back to original size
-        4. Average all scales to get final output
+        """Process input through multiple scales and combine features
         
         Args:
-            x (torch.Tensor): Input tensor [batch_size, channels, height, width]
+            x (torch.Tensor): Input images [batch, channels, height, width]
             
         Returns:
-            torch.Tensor: Processed tensor [batch_size, num_filters, height, width]
+            torch.Tensor: Multi-scale features [batch, num_filters, height, width]
             
         Example:
             >>> layer = MultiscaleConvolution(1, 64)
-            >>> x = torch.randn(32, 1, 28, 28)
-            >>> out = layer(x)  # Shape: [32, 64, 28, 28]
+            >>> x = torch.randn(8, 1, 64, 64)
+            >>> out = layer(x)  # Shape: [8, 64, 64, 64]
         """
         x = x.to(self.device)
         
@@ -174,40 +189,60 @@ class MultiscaleConvolution(nn.Module):
 
     @property
     def output_size(self) -> int:
-        """Get the number of output channels"""
+        """Get the number of output channels
+        
+        Args:
+            None
+            
+        Returns:
+            int: Number of output channels (filters)
+            
+        Example:
+            >>> layer = MultiscaleConvolution(1, 64)
+            >>> layer.output_size  # 64
+        """
         return self.num_filters
 
 # Define the MLP for estimating mean and variance
 class MLP(nn.Module):
-    """
+    """Neural network for predicting denoising parameters in diffusion models
+    
+    Uses two parallel processing paths to extract features:
+    1. Multi-scale path: Captures spatial features across different scales
+    2. Dense path: Processes pixel-wise channel relationships
+    
     Args:
-        num_channels (int): Number of input channels (e.g., 1 for grayscale)
-        num_layers (int): Number of layers in each processing path
-        num_output_channels (int): Number of output channels (e.g., 2*n for mean/variance)
-        hidden_channels (int, optional): Width of hidden layers. Default: 128
-        activation (nn.Module, optional): Activation function. Default: nn.Tanh
-        reduction_factor (int, optional): Channel reduction in final layers. Default: 2
-    
-    Shape:
-        - Input: (batch_size, num_channels, height, width)
-        - Output: (batch_size, num_output_channels, height, width)
-    
-    Examples:
-        >>> # For MNIST-like images
-        >>> mlp = MLP(num_channels=1, num_layers=200, num_output_channels=20)
-        >>> x = torch.randn(32, 1, 28, 28)
-        >>> out = mlp(x)  # Shape: [32, 20, 28, 28]
+        num_channels (int): Number of input channels
+        num_layers (int): Number of layers in each path
+        num_output_channels (int): Number of output channels
+        hidden_channels (int): Hidden dimension size
+        activation (nn.Module): Activation function class
+        reduction_factor (int): Factor to reduce channels in final layers
         
-        >>> # For RGB images with larger resolution
-        >>> mlp = MLP(num_channels=3, num_layers=200, num_output_channels=30)
-        >>> x = torch.randn(16, 3, 64, 64)
-        >>> out = mlp(x)  # Shape: [16, 30, 64, 64]
-        
-        >>> # Split output into mean and variance
-        >>> mean, var = out.chunk(2, dim=1)  # Each has half the channels
+    Example:
+        >>> mlp = MLP(num_channels=1, num_output_channels=20)
+        >>> x = torch.randn(16, 1, 28, 28)
+        >>> out = mlp(x)  # Shape: [16, 20, 28, 28]
     """
     def __init__(self, num_channels=1, num_layers=200, num_output_channels=20,
                  hidden_channels=128, activation=nn.Tanh, reduction_factor=2):
+        """Initialize MLP with parallel processing paths
+        
+        Args:
+            num_channels (int): Number of input channels
+            num_layers (int): Number of layers in each processing path
+            num_output_channels (int): Number of output channels
+            hidden_channels (int): Hidden dimension size
+            activation (nn.Module): Activation function class
+            reduction_factor (int): Channel reduction factor for final layers
+            
+        Returns:
+            None
+            
+        Example:
+            >>> mlp = MLP(num_channels=3, num_layers=100, num_output_channels=10)
+            >>> mlp.num_channels  # 3
+        """
         super(MLP, self).__init__()
         
         # Core network parameters
@@ -218,19 +253,25 @@ class MLP(nn.Module):
         self.activation = activation()
         
         # Build parallel processing paths
-        self.msc_path = self._build_msc_path()  # Multi-scale convolution path
-        self.dense_path = self._build_dense_path()  # 1x1 convolution path
+        self.msc_path = self._build_msc_path()
+        self.dense_path = self._build_dense_path()
         
         # Final layers for combining and reducing features
         self.final_conv = self._build_final_layers(reduction_factor)
 
     def _build_msc_path(self):
-        """Build multi-scale convolution path
+        """Create multi-scale convolutional path for spatial feature extraction
         
-        Creates a sequence of MultiscaleConvolution layers that:
-        1. Process input at multiple resolutions
-        2. Capture spatial dependencies
-        3. Maintain consistent channel dimensions
+        Args:
+            None
+            
+        Returns:
+            nn.ModuleList: List of MultiscaleConvolution layers
+            
+        Example:
+            >>> mlp = MLP(num_layers=3)
+            >>> msc_path = mlp._build_msc_path()
+            >>> len(msc_path)  # 3
         """
         layers = nn.ModuleList([
             MultiscaleConvolution(self.num_channels, self.hidden_channels)
@@ -245,12 +286,18 @@ class MLP(nn.Module):
         return layers
 
     def _build_dense_path(self):
-        """Build dense path with 1x1 convolutions
+        """Create 1x1 convolution path for pixel-wise feature processing
         
-        Creates a sequence of 1x1 convolutions that:
-        1. Process each pixel independently
-        2. Allow channel-wise feature mixing
-        3. Maintain spatial dimensions
+        Args:
+            None
+            
+        Returns:
+            nn.ModuleList: List of Conv2d and activation layers
+            
+        Example:
+            >>> mlp = MLP(num_layers=2)
+            >>> dense_path = mlp._build_dense_path()
+            >>> len(dense_path)  # 4 (2 layers * 2 components each)
         """
         layers = nn.ModuleList()
         
@@ -270,13 +317,18 @@ class MLP(nn.Module):
         return layers
 
     def _build_final_layers(self, reduction_factor):
-        """Construct final layers that reduce feature dimensions
+        """Create final layers to reduce feature dimensions and generate output
         
-        Architecture:
-        1. Reduce channels by reduction_factor to compress features
-        2. Apply activation for non-linearity
-        3. Project to final output channels (e.g., for mean and variance)
-        4. Final activation for stable outputs
+        Args:
+            reduction_factor (int): Factor to reduce hidden channels
+            
+        Returns:
+            nn.Sequential: Sequential layers for dimension reduction and output
+            
+        Example:
+            >>> mlp = MLP(hidden_channels=128, reduction_factor=2)
+            >>> final_layers = mlp._build_final_layers(2)
+            >>> # Reduces 128 -> 64 -> num_output_channels
         """
         reduced_channels = self.hidden_channels // reduction_factor
         return nn.Sequential(
@@ -287,54 +339,61 @@ class MLP(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Network forward pass combining multi-scale and dense paths
-        
-        Process flow:
-        1. Split input into two parallel paths
-        2. Process through multi-scale convolutions for spatial features
-        3. Process through 1x1 convolutions for channel mixing
-        4. Combine results and reduce dimensions
+        """Process input through both parallel paths and combine features
         
         Args:
-            x (torch.Tensor): Input tensor [batch_size, channels, height, width]
+            x (torch.Tensor): Input images [batch, channels, height, width]
             
         Returns:
-            torch.Tensor: Output tensor [batch_size, num_output_channels, height, width]
+            torch.Tensor: Combined features [batch, num_output_channels, height, width]
             
         Example:
-            >>> mlp = MLP(num_channels=1, num_output_channels=2)
-            >>> x = torch.randn(32, 1, 28, 28)
-            >>> out = mlp(x)  # Shape: [32, 2, 28, 28]
-            >>> mu, sigma = out[:, 0], out[:, 1]  # Split into statistics
+            >>> net = MLP(num_channels=3, num_output_channels=6)
+            >>> x = torch.randn(4, 3, 32, 32)
+            >>> out = net(x)  # Shape: [4, 6, 32, 32]
         """
-        # Process through parallel paths independently
-        x_msc = self._forward_msc_path(x.clone())  # Multi-scale features
-        x_dense = self._forward_dense_path(x.clone())  # Dense features
+        # Process through parallel paths
+        x_msc = self._forward_msc_path(x.clone())
+        x_dense = self._forward_dense_path(x.clone())
         
-        # Combine features and apply dimension reduction
+        # Combine and reduce dimensions
         return self.final_conv(x_msc + x_dense)
 
     def _forward_msc_path(self, x: torch.Tensor) -> torch.Tensor:
-        """Process input through multi-scale path
+        """Process input through multi-scale convolutional layers sequentially
         
-        Sequentially applies MultiscaleConvolution layers to:
-        1. Capture features at different scales
-        2. Process spatial dependencies
-        3. Maintain original resolution
+        Args:
+            x (torch.Tensor): Input tensor [batch, channels, height, width]
+            
+        Returns:
+            torch.Tensor: Multi-scale features [batch, hidden_channels, height, width]
+            
+        Example:
+            >>> mlp = MLP(num_channels=1, hidden_channels=64)
+            >>> x = torch.randn(8, 1, 32, 32)
+            >>> features = mlp._forward_msc_path(x)
+            >>> features.shape  # torch.Size([8, 64, 32, 32])
         """
         for layer in self.msc_path:
             x = layer(x)
         return x
 
     def _forward_dense_path(self, x: torch.Tensor) -> torch.Tensor:
-        """Process input through dense path
+        """Process input through 1x1 convolutional layers with activations
         
-        Sequentially applies 1x1 convolutions to:
-        1. Mix channel information
-        2. Process each pixel independently
-        3. Maintain spatial dimensions
+        Args:
+            x (torch.Tensor): Input tensor [batch, channels, height, width]
+            
+        Returns:
+            torch.Tensor: Dense features [batch, hidden_channels, height, width]
+            
+        Example:
+            >>> mlp = MLP(num_channels=1, hidden_channels=64)
+            >>> x = torch.randn(8, 1, 32, 32)
+            >>> features = mlp._forward_dense_path(x)
+            >>> features.shape  # torch.Size([8, 64, 32, 32])
         """
         for i in range(0, len(self.dense_path), 2):
-            x = self.dense_path[i](x)  # Conv2d
-            x = self.dense_path[i+1](x)  # Activation
+            x = self.dense_path[i](x)      # Conv2d layer
+            x = self.dense_path[i+1](x)    # Activation function
         return x
