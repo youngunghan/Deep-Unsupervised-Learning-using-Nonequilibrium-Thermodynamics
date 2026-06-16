@@ -1,0 +1,21 @@
+# Deep Unsupervised Learning using Nonequilibrium Thermodynamics docs
+
+> Sohl-Dickstein et al. 2015(arXiv:1503.03585)의 PyTorch 재구현(비평형 열역학 확산모델, DDPM 전신). 사람용 인덱스는 README.md, 이 파일은 LLM 에이전트용 압축 색인.
+
+## Tutorials
+- [tutorials/quickstart.md](tutorials/quickstart.md) : 설치 → MNIST 학습 → TensorBoard 샘플 확인
+
+## How-to
+- [how-to/train-mnist.md](how-to/train-mnist.md) : MNIST 학습·체크포인트 재개·하이퍼파라미터 변경
+- [how-to/sample-and-inpaint.md](how-to/sample-and-inpaint.md) : 샘플 생성·inpainting/denoising 유틸
+- [how-to/run-swiss-roll.md](how-to/run-swiss-roll.md) : Swiss Roll 데모 실행·평가지표·시각화
+
+## Reference
+- [reference/configuration.md](reference/configuration.md) : CLI 인자·environment.yml·셸 스크립트
+- [reference/api-reference.md](reference/api-reference.md) : DiffusionModel·MLP·infer 함수 명세
+- [reference/data-model.md](reference/data-model.md) : 데이터셋·텐서 형상·노이즈 스케줄
+
+## Explanation
+- [explanation/architecture.md](explanation/architecture.md) : 두 구현 대비·모델 백본·데이터 흐름
+- [explanation/diffusion-method.md](explanation/diffusion-method.md) : 확산·비평형 열역학·순/역방향·목적함수
+- [explanation/known-issues.md](explanation/known-issues.md) : 알려진 이슈·수정·재현성

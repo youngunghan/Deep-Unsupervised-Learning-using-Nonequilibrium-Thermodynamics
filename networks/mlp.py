@@ -53,7 +53,7 @@ class MultiscaleConvolution(nn.Module):
             >>> layer.num_filters  # 64
         """
         super(MultiscaleConvolution, self).__init__()
-        self.device = device if device is not None else torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.device = device
         
         # Configuration
         self.num_scales = num_scales
@@ -65,6 +65,9 @@ class MultiscaleConvolution(nn.Module):
         
         # Initialize convolution layers
         self.conv_layers = self._build_conv_layers(num_channels)
+        
+        if self.device is not None:
+            self.to(self.device)
 
     def _build_conv_layers(self, num_channels: int) -> nn.ModuleList:
         """Create convolution layers for each scale
@@ -86,7 +89,7 @@ class MultiscaleConvolution(nn.Module):
                 kernel_size=self.filter_size,
                 padding=self.filter_size // 2,
                 padding_mode=self.padding_mode
-            ).to(self.device) for _ in range(self.num_scales)
+            ) for _ in range(self.num_scales)
         ])
 
     @staticmethod
@@ -165,7 +168,8 @@ class MultiscaleConvolution(nn.Module):
             >>> x = torch.randn(8, 1, 64, 64)
             >>> out = layer(x)  # Shape: [8, 64, 64, 64]
         """
-        x = x.to(self.device)
+        device = next(self.parameters()).device
+        x = x.to(device)
         
         # Get original size and initialize output
         original_size = x.shape[-1]
@@ -174,7 +178,8 @@ class MultiscaleConvolution(nn.Module):
             self.num_filters,
             original_size,
             original_size,
-            device=self.device
+            device=device,
+            dtype=x.dtype
         )
         
         # Process each scale
@@ -218,6 +223,7 @@ class MLP(nn.Module):
         hidden_channels (int): Hidden dimension size
         activation (nn.Module): Activation function class
         reduction_factor (int): Factor to reduce channels in final layers
+        device (torch.device): Optional device for the full module
         
     Example:
         >>> mlp = MLP(num_channels=1, num_output_channels=20)
@@ -225,7 +231,8 @@ class MLP(nn.Module):
         >>> out = mlp(x)  # Shape: [16, 20, 28, 28]
     """
     def __init__(self, num_channels=1, num_layers=200, num_output_channels=20,
-                 hidden_channels=128, activation=nn.Tanh, reduction_factor=2):
+                 hidden_channels=128, activation=nn.Tanh, reduction_factor=2,
+                 device=None):
         """Initialize MLP with parallel processing paths
         
         Args:
@@ -235,6 +242,7 @@ class MLP(nn.Module):
             hidden_channels (int): Hidden dimension size
             activation (nn.Module): Activation function class
             reduction_factor (int): Channel reduction factor for final layers
+            device (torch.device): Optional device for the full module
             
         Returns:
             None
@@ -251,6 +259,7 @@ class MLP(nn.Module):
         self.hidden_channels = hidden_channels
         self.num_output_channels = num_output_channels
         self.activation = activation()
+        self.device = device
         
         # Build parallel processing paths
         self.msc_path = self._build_msc_path()
@@ -258,6 +267,9 @@ class MLP(nn.Module):
         
         # Final layers for combining and reducing features
         self.final_conv = self._build_final_layers(reduction_factor)
+        
+        if self.device is not None:
+            self.to(self.device)
 
     def _build_msc_path(self):
         """Create multi-scale convolutional path for spatial feature extraction

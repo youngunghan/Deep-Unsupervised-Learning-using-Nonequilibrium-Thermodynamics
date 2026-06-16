@@ -18,11 +18,12 @@ def main():
     # Reduce batch size
     args.batch_size = min(args.batch_size, 8)  # Further reduced batch size
     
-    # Set device
+    # Set device and keep downstream training/validation code in sync with the fallback.
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
+    args.device = str(device)
     
     # Create directories
-    os.makedirs("checkpoints", exist_ok=True)
+    os.makedirs(args.save_dir, exist_ok=True)
     
     # Prepare datasets with CustomDataset wrapper
     transform = transforms.Compose([
@@ -55,6 +56,11 @@ def main():
         n_colors=args.n_colors,
         n_temporal_basis=args.n_temporal_basis,
         trajectory_length=args.trajectory_length,
+        beta_start=args.beta_start,
+        beta_end=args.beta_end,
+        mlp_layers=args.num_layers,
+        mlp_hidden_channels=args.hidden_channels,
+        min_t=args.min_t,
         device=device
     ).to(device)
     

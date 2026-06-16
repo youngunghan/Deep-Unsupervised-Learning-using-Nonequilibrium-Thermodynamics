@@ -1,6 +1,11 @@
 # Deep Unsupervised Learning using Nonequilibrium Thermodynamics
 
-This repository implements deep unsupervised learning techniques using nonequilibrium thermodynamics principles. 
+This repository implements deep unsupervised learning techniques using nonequilibrium thermodynamics principles.
+
+> **Note:** This is a **PyTorch reimplementation** of Sohl-Dickstein et al. (2015),
+> *Deep Unsupervised Learning using Nonequilibrium Thermodynamics* ([arXiv:1503.03585](https://arxiv.org/abs/1503.03585)) —
+> the precursor to DDPM. The original paper code was written in Theano/Blocks/Fuel (Python 2),
+> which are no longer maintained; this repo is a modern PyTorch rewrite.
 
 ## Environment Setup
 
@@ -15,6 +20,8 @@ Before preprocessing the dataset, ensure you have the required environment set u
    conda activate deep_thermo
    ```
 
+Detailed Korean developer documentation is available in [`docs/README.md`](docs/README.md).
+
 ---
 # MNIST
 ---
@@ -23,7 +30,9 @@ Before preprocessing the dataset, ensure you have the required environment set u
 
 ### Prepare the Dataset
 
-Ensure the MNIST dataset is preprocessed and available in the `data/MNIST/` directory.
+No manual preparation is required: `scripts/train.py` calls
+`torchvision.datasets.MNIST(..., download=True)`, so MNIST is downloaded
+automatically into `data/MNIST/` on first run.
 
 
 ### Run the Training Script
@@ -39,20 +48,21 @@ Execute the training script to start the training process:
    ./train.sh
    ```
 
-## Inference
+## Sampling / Inference
 
-### Run the Inference Script
+> **Note:** `scripts/infer.py` currently provides **utility functions only**
+> (`diffusion_step`, `generate_inpaint_mask`, `plot_images`) and has **no `__main__`
+> entry point** — running `python scripts/infer.py` does nothing on its own.
 
-Execute the inference script to generate predictions on the MNIST dataset:
+Samples are generated automatically **during training** and logged to TensorBoard
+(the `samples/generated` panel); they are produced by `DiffusionModel.sample()`
+in `networks/dpm.py`.
 
-1. **Give execution permission to the inference script:**  
-   ```bash
-   chmod +x scripts/infer.py
-   ```
-2. **Run the inference script:**  
-   ```bash
-   python scripts/infer.py
-   ```
+To generate samples manually, load a trained checkpoint and call
+`model.sample(batch_size)` (`networks/dpm.py`) or `generate_samples(model, n_samples)`
+(`utils.py`). The inpainting/denoising helpers in `scripts/infer.py` can drive a
+guided reverse process. Note the sampler currently stops at `min_t` (default 100)
+rather than `t = 0` — see the project wiki for details.
 
 ---
 Swiss Roll
@@ -73,7 +83,7 @@ Execute the training script to start the training process:
 
 ## References
 
-- The dataset is based on the MNIST and Swoss Roll dataset, which is widely used for training and testing in machine learning.
+- The dataset is based on the MNIST and Swiss Roll dataset, which is widely used for training and testing in machine learning.
 - Deep Unsupervised Learning using Nonequilibrium Thermodynamics (arXiv 2015)
    - [Review](https://outta.tistory.com/109) <br>
    - [Paper](https://arxiv.org/abs/1503.03585) <br>

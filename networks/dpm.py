@@ -89,7 +89,7 @@ class DiffusionModel(nn.Module):
             None
             
         Example:
-            >>> model._initialize_diffusion_params(0.0001, 0.02)  # Called automatically in __init__
+            >>> model._initialize_diffusion_params(0.01, 0.05)  # Called automatically in __init__ (defaults)
             >>> model.beta.shape  # torch.Size([trajectory_length])
         """
         # Linear noise schedule: β_t from beta_start to beta_end
@@ -118,7 +118,8 @@ class DiffusionModel(nn.Module):
             num_channels=self.n_colors,
             num_layers=num_layers,
             num_output_channels=2 * self.n_colors * self.n_temporal_basis,
-            hidden_channels=hidden_channels
+            hidden_channels=hidden_channels,
+            device=self.device
         )
 
     def generate_temporal_basis(
