@@ -29,8 +29,12 @@ def diffusion_step(Xmid, t, get_mu_sigma, denoise_sigma, mask, XT, device):
         sigma = sigma_new
         mu = mu_new
     if mask is not None:
-        mu.flat[mask] = XT.flat[mask]
-        sigma.flat[mask] = 0.
+        # `mask` is a flat boolean array (see generate_inpaint_mask); torch tensors
+        # have no NumPy-style `.flat`, so reshape the mask and use torch.where instead.
+        mask_t = torch.as_tensor(mask, dtype=torch.bool, device=mu.device).reshape(mu.shape)
+        XT_t = torch.as_tensor(XT, dtype=mu.dtype, device=mu.device)
+        mu = torch.where(mask_t, XT_t, mu)
+        sigma = torch.where(mask_t, torch.zeros_like(sigma), sigma)
     Xmid = mu + sigma*(torch.normal(0,1,size=Xmid.shape).to(device))
 
     return Xmid
@@ -42,7 +46,7 @@ def generate_inpaint_mask(n_samples, n_colors, spatial_width):
     """
     mask = np.zeros((n_samples, n_colors, spatial_width, spatial_width), dtype=bool)
     # simple mask -- just mask out half the image
-    mask[:,:,:,spatial_width/2:] = True
+    mask[:,:,:,spatial_width//2:] = True
     return mask.ravel()
 
 def plot_images(images, title=None, ncols=6):

@@ -40,7 +40,7 @@ def train_options():
     parser.add_argument('--exp_name', type=str, default='diffusion_default',
                       help='Name of the experiment')
     parser.add_argument('--val_interval', type=int, default=10,
-                      help='How often to perform validation (in epochs)')
+                      help='How often to perform validation (in batches)')
     
     # Save and load options
     parser.add_argument('--save_dir', type=str, default='checkpoints',
